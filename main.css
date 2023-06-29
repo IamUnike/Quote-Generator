@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+
+/* General Styling */
+*{
+	box-sizing:border-box;
+	margin:0;
+	padding:0;
+}
+
+body {
+	background-color:#3882F6;
+	display: flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction:column;
+	height:100vh;
+	width:100vw;
+	font-family:poppins;
+	font-size: 14px;
+}
+
+.type{
+	position: absolute;
+	right: 0px;
+	top: -15px;
+	color: white;
+	background-color: #333;
+	padding:3px;
+}
+
+
+
+/* The Container Styling */
+.quote-container{
+	background-color:white;
+	color: #333;
+	width:90%;
+	max-height: 400px;
+	border-radius:7px;
+	padding:20px;
+	text-align: center;
+	position: relative;
+}
+
+/* The Quoter Header Styling */
+.header{
+	width:100%;	
+	font-size:22px;
+	font-family:poppins;
+	font-weight:bold;	
+}
+
+/* The Quote Styling */
+.quote-content{
+	line-height:25px;
+	margin:20px auto 10px;
+	font-size:16px;
+	font-family: poppins;
+}
+
+/* The Quote Author Styling */
+.author-content {
+	text-align:right;
+	font-size:14px;	
+	font-weight:bold;
+	font-family: poppins;
+}
+
+	
+/* The  Button Container Styling */
+.btn-container{
+	display: flex;
+	justify-content:space-between;
+	align-items:center;
+	margin:20px auto 0;
+}
+
+/* The Next Button Styling */
+.next-btn, .prev-btn, .new-quote-btn{
+	outline:0;
+	border:0;
+	background-color:#3882F6;
+	color:white;
+	padding:8px 5px;
+	border-radius:2px;
+	font-size:17px;
+}
+
+.next-btn:hover, .prev-btn:hover{	
+	border:2px outset #3882F6;
+}
+
+.new-quote-btn {
+	background-color:transparent;
+	border:2px solid white;
+	margin:30px auto 0;
+	font-weight:bold;
+}
+
+.new-quote-btn:hover{
+	background-color: white;
+	color:#3882F6;
+}
+
+
+.random-quote {
+	background-color:#333;
+	border:none;
+	margin:30px auto 0;
+	font-weight:bold;
+	color: white;
+	padding: 10px;
+	border-radius: 5px;
+	font-family: poppins;
+}
+
+.random-quote:hover{
+	background-color:transparent;
+	border: 2px solid white;
+}
+
+
+
+/* User-Quote Container Styling*/
+.new-quote-container {
+	width:90%;
+	background-color:white;
+	margin:20px auto 0;
+	padding:10px;
+	position: relative;
+}
+
+
+input{
+	padding:10px;
+	margin:20px;
+	width:90%;
+	border:none;
+	border-bottom:1px solid #333;
+	font-size:14px;
+	outline:0;
+	background-color:transparent;
+}
+
+.addBtn{
+	background-color:#3882F6;
+	color:white;
+	padding:10px 12px;
+	outline:none;
+	border:none;
+	margin:0 82% ;
+	border-radius:3px;
+}
+
+.addBtn:hover{
+	border:2px outset #3882F6;
+}
+
+.close-btn{
+	color:crimson;
+	text-align:right;
+	font-weight:bold;
+	font-size:18px;
+	padding:0 4px;
+	margin:0 90%;
+	border:1px solid #3882F6;
+	border-radius:2px;
+}
+
+.close-btn:hover{
+	background-color:#3882F6;
+	opacity:.7;
+	border:2px outset #3882F6;
+}
+
+
+
+/*Share button section styling */
+.share-btns{
+	display: flex;
+	justify-content: space-around;
+	align-items:center;
+	margin:30px auto 0;
+	background-color:#333;
+	padding:10px;
+	color:white;
+}
+
+.twitter, .whatsapp, .copy-btn, .speech-btn{
+	outline:0;
+	border:0;
+	padding:5px 8px;
+	color:white;
+	border-radius:3px;
+	transition: .4s;
+}
+
+.copy-btn, .speech-btn{
+	background-color:#3772F6;
+}
+
+.copy-btn:hover, .speech-btn:hover, .twitter:hover, .whatsapp:hover{
+	scale: 1.2;
+}
+
+.twitter{
+	background-color:#3772F6;
+}
+
+.whatsapp{
+	background-color:green;
+}
+
+
+/* The Hide Class */
+.hide{
+display:none;
+}

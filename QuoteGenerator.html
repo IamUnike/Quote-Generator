@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+<title>Random Quote Generator</title>
+<style type="text/css">
+/* General Styling */
+*{
+	box-sizing:border-box;
+	margin:0;
+	padding:0;
+}
+
+body {
+	background-color:#3882F6;
+	display: flex;
+	justify-content:center;
+	align-items:center;
+	flex-direction:column;
+	height:100vh;
+	width:100vw;
+	font-family:poppins;
+	font-size: 14px;
+}
+
+
+
+/* The Container Styling */
+.quote-container{
+	background-color:white;
+	color: #333;
+	width:90%;
+	max-height: 400px;
+	border-radius:7px;
+	padding:20px;
+	text-align: center;
+}
+
+/* The Quoter Header Styling */
+.header{
+	width:100%;	
+	font-size:22px;
+	font-family:poppins;
+	font-weight:bold;	
+}
+
+/* The Quote Styling */
+.quote-content{
+	line-height:25px;
+	margin:20px auto 10px;
+	font-size:16px;
+	font-family: poppins;
+}
+
+/* The Quote Author Styling */
+.author-content {
+	text-align:right;
+	font-size:14px;	
+	font-weight:bold;
+	font-family: poppins;
+}
+
+	
+/* The  Button Container Styling */
+.btn-container{
+	display: flex;
+	justify-content:space-between;
+	align-items:center;
+	margin:20px auto 0;
+}
+
+/* The Next Button Styling */
+.next-btn, .prev-btn, .new-quote-btn{
+	outline:0;
+	border:0;
+	background-color:#3882F6;
+	color:white;
+	padding:8px 5px;
+	border-radius:2px;
+	font-size:17px;
+}
+
+.next-btn:hover, .prev-btn:hover{	
+	border:2px outset #3882F6;
+}
+
+.new-quote-btn {
+	background-color:transparent;
+	border:2px solid white;
+	margin:30px auto 0;
+	font-weight:bold;
+}
+
+.new-quote-btn:hover{
+	background-color: white;
+	color:#3882F6;
+}
+
+.random-quote {
+	background-color:transparent;
+	border:2px solid white;
+	margin:30px auto 0;
+	font-weight:bold;
+	font-family: poppins;
+}
+
+
+
+/* User-Quote Container Styling*/
+.new-quote-container {
+	width:90%;
+	background-color:white;
+	margin:20px auto 0;
+	padding:10px;
+	position: relative;
+}
+
+
+input{
+	padding:10px;
+	margin:20px;
+	width:90%;
+	border:none;
+	border-bottom:1px solid #333;
+	font-size:16px;
+	outline:0;
+	background-color:transparent;
+	font-family: poppins;
+}
+
+.addBtn{
+	background-color:#3882F6;
+	color:white;
+	padding:10px 12px;
+	outline:none;
+	border:none;
+	margin:0 82% ;
+	border-radius:3px;
+}
+
+.addBtn:hover{
+	border:2px outset #3882F6;
+}
+
+.close-btn{
+	color:crimson;
+	text-align:right;
+	font-weight:bold;
+	font-size:18px;
+	padding:0 4px;
+	margin:0 90%;
+	border:1px solid #3882F6;
+	border-radius:2px;
+}
+
+.close-btn:hover{
+	background-color:#3882F6;
+	opacity:.7;
+	border:2px outset #3882F6;
+}
+
+
+
+/*Share button section styling */
+.share-btns{
+	display: flex;
+	justify-content:space-around;
+	align-items:center;
+	margin:30px auto 0;
+	background-color:#333;
+	padding:10px;
+}
+
+.twitter, .facebook, .whatsapp{
+	outline:0;
+	border:0;
+	padding:7px 3px;
+	color:white;
+	border-radius:3px;
+}
+
+.twitter:hover, .facebook:hover, .whatsapp:hover{
+	border:2px inset white;
+}
+
+.twitter{
+	background-color:#3772F6;
+}
+
+.whatsapp{
+	background-color:green;
+}
+
+.facebook{
+	background-color:rgba(0, 80, 220, 1);
+}
+
+
+/* The Hide Class */
+.hide{
+display:none;
+}
+</style>
+</head>
+<body>
+	<!--- The Quote Container --->
+	<div class="quote-container" >	
+		
+		<!--- The Header --->
+		<header class="header"> Quote of the Day </header>
+		
+		<!--- The Quote Area--->
+		<div class="quote-area" >	
+			<!--- The Actual Quote  --->
+			<blockquote class="quote-content" >	</blockquote>
+			
+			<!--- The Quote Author --->
+			<p class="author-content" > - Author</p>
+		</div>
+		
+		<hr>
+		
+		<!--- The Next and Previous Buttons--->
+		<div class="btn-container" >
+			<button class="prev-btn" >  Prev << </button>
+	
+			<button class="next-btn" > Next >> </button>
+		</div>
+		
+		<!--- The Social Media Share Buttons--->
+		<div class="share-btns" >
+			<button class="twitter" > Twitter</button>
+			<button class="whatsapp" > Whatsapp</button>
+			<button class="facebook" > Facebook</button>
+		</div>				
+	</div>
+	
+	
+	<!-- Add New Quote Button ---->	
+	<button class="new-quote-btn" > Add new quote + </button>
+
+	
+	<!-- New User Quote Container ---->
+	<div class="new-quote-container hide" >
+		<span class="close-btn" > X </span>
+		
+		<input class="user-quote"  type="text" placeholder="Enter your new quote..." >
+	
+		<input class="user-author" type="text" placeholder="Author of your quote..." >
+	
+		<button class="addBtn" > Add </button>
+	</div>
+
+
+
+
+<script type="text/javascript">
+// This Function fires when the page loads 
+window.addEventListener("load", getQuote)
+
+// General Element Collection 
+let quoteContent = document.querySelector(".quote-content")
+let authorContent = document.querySelector(".author-content")
+let nextBtn = document.querySelector(".next-btn")
+let previousBtn = document.querySelector(".prev-btn")
+let twitterBtn = document.querySelector(".twitter")
+let whatsappBtn = document.querySelector(".whatsapp")
+let facebookBtn = document.querySelector(".facebook")
+
+let quoteContainer = document.querySelector(".quote-container")
+let newQuoteContainer = document.querySelector(".new-quote-container")
+let newQuoteBtn = document.querySelector(".new-quote-btn")
+
+// This array contains the quotes and authors
+	const quoteCollection = [
+		//Quote 1
+		{quote: "Make the most of yourself, for there will never be another You. And the most of today, for there will never be another now", 
+		 author: "Gideon Cyril"
+		},
+		
+		//Quote 2
+		{quote: "Imagination is greater than knowledge", 
+		 author: "Albert Einstein"
+		},		
+		
+		//Quote 3
+		{quote: "People will forget what you said, people will forget what you did, but people will never forget how you made them feel",
+		 author: "Maya Angelou"
+		},		
+		
+		//Quote 4
+		{quote: "Life isn't about finding yourself. Life is about creating yourself",
+	   	 author: "George Bernard Shaw"
+		},		
+		
+		//Quote 5
+		{quote: "Be the change that you wish to see in the world",
+		 author: "Mahatma Gandhi"
+		},		
+		
+		//Quote 6
+		{quote: "You must do the things you think you cannot do", 
+		 author: "Eleanor Roosevelt"
+		},		
+		
+		//Quote 7
+		{quote: "Miracles happen every day. Change your perception of what a miracle is and you'll see them all around you",
+		 author: "Jon Bon Jovi"
+		},	
+			
+		//Quote 8
+		{quote: "Success isn't about how much money you make. It's about the difference you make in people's lives",
+	     author: "Michelle Obama"
+		},	
+			
+		//Quote 9
+		{quote: "You miss 100 percent of the shots you don't take",
+		 author: "Wayne Gretzky"
+		},
+		
+		//Quote 10
+		{quote: "If you don't stand for something, you'll fall for anything",
+		 author: "Malcolm X"
+		},
+	]
+	
+	
+//This Function gives text to the quoteContents	
+	function getQuoteText(){
+		quoteContent.textContent = " \" " + " " + quoteCollection[Index].quote + " \" "
+		authorContent.textContent = "- " + quoteCollection[Index].author
+	}
+	
+	
+	
+//This Function gets the quote and author
+	function getQuote(){
+		//Quote Index
+		Index = 0;	
+		//fire the getQuoteText function 
+		getQuoteText()
+	}
+	
+	
+// This Function gets the next quote
+	function getNextQuote(){
+		Index++
+		//fire the getQuoteText function 
+		getQuoteText()
+		
+		if(Index === (quoteCollection.length - 1)){
+			Index = -1
+		}
+	}
+	nextBtn.addEventListener("click", getNextQuote)
+
+
+// This Function gets the previous quote
+	function getPrevQuote(){
+		Index--	
+				
+		if(Index === -1){
+			Index = (quoteCollection.length - 1)
+		}	
+		//fire the getQuoteText function 
+		getQuoteText()			
+	}
+	previousBtn.addEventListener("click", getPrevQuote)
+
+
+// This Function shares the quote to Twitter when clicked
+	twitterBtn.addEventListener("click", function(){
+		let tweetUrl = `https://twitter.com/intent/tweet?url=${quoteContent.textContent}`
+			window.open(tweetUrl, "_blank")
+	})
+	
+	
+// This Function shares the quote to Whatsapp when clicked
+	whatsappBtn.addEventListener("click", function(){
+		let whatsappUrl = `whatsapp://send?text=${quoteContent.textContent}`
+			window.open(whatsappUrl, "_blank")
+	})
+	
+	
+// This Function shares the quote to Facebook when clicked
+	facebookBtn.addEventListener("click", function(){
+		let facebookUrl
+			window.open(facebookUrl, "_blank")
+	})
+
+
+
+
+//This Function displays a page for the user to enter a new quote
+	function getNewQuoteContainer(){
+		quoteContainer.classList.add("hide")
+		newQuoteBtn.classList.add("hide")
+		newQuoteContainer.classList.remove("hide")
+	}
+	newQuoteBtn.addEventListener("click", getNewQuoteContainer)
+
+
+// This Function adds the user new quote to the array of quotecollection
+	let userQuote = document.querySelector(".user-quote")
+	let userAuthor = document.querySelector(".user-author")	
+	function addUserQuote(){
+		//add the user input to the beginning of the array
+		quoteCollection.unshift({
+			quote: userQuote.value,
+			author: userAuthor.value
+		})
+		
+		quoteContainer.classList.remove("hide")
+		newQuoteBtn.classList.remove("hide")
+		newQuoteContainer.classList.add("hide")
+		//call the getQuote function so the user will see the quote he entered
+		getQuote()
+			
+		//reset the user input values
+		userQuote.value = ""
+		userAuthor.value = ""
+	}
+	//The add user quote function fires when the add button is clicked
+	let addBtn = document.querySelector(".addBtn")	
+		addBtn.addEventListener("click", addUserQuote)
+
+
+//This Function closes the new quote container when the user clicks on the close button
+	let closeBtn = document.querySelector(".close-btn")
+		closeBtn.addEventListener("click", function(){
+			quoteContainer.classList.remove("hide")
+			newQuoteBtn.classList.remove("hide")
+			newQuoteContainer.classList.add("hide")
+			
+			//reset the user input values
+			userQuote.value = ""
+			userAuthor.value = ""
+		})
+
+
+console.log(quoteCollection.length)
+</script>
+</body>
+</html>
